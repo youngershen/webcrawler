@@ -12,19 +12,19 @@ BOT_NAME = 'webcrawler'
 
 SPIDER_MODULES = ['webcrawler.spiders']
 NEWSPIDER_MODULE = 'webcrawler.spiders'
-CONCURRENT_ITEMS = 50
+CONCURRENT_ITEMS = 30
 
 # Enables scheduling storing requests queue in redis.
 #SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 
 # Don't cleanup redis queues, allows to pause/resume crawls.
-#SCHEDULER_PERSIST = True
+SCHEDULER_PERSIST = True
 
 # Schedule requests using a priority queue. (default)
 #SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
 
 # Schedule requests using a queue (FIFO).
-#SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderQueue'
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderQueue'
 
 # Schedule requests using a stack (LIFO).
 #sSCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderStack'
@@ -32,7 +32,7 @@ CONCURRENT_ITEMS = 50
 # Max idle time to prevent the spider from being closed when distributed crawling.
 # This only works if queue class is SpiderQueue or SpiderStack,
 # and may also block the same time when your spider start at the first time (because the queue is empty).
-#SCHEDULER_IDLE_BEFORE_CLOSE = 10
+SCHEDULER_IDLE_BEFORE_CLOSE = 10
 
 # Store scraped item in redis for post-processing.
 ITEM_PIPELINES = [
@@ -54,3 +54,10 @@ DOWNLOAD_DELAY = 2
 RANDOMIZE_DOWNLOAD_DELAY = True
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.54 Safari/536.5'
 COOKIES_ENABLED = True
+
+SPIDER_MIDDLEWARES = {
+    'webcrawler.middlewares.StopRepeatMiddleware.StopRepeatMiddleware': 543,
+
+}
+
+#LOG_LEVEL = 'INFO'
