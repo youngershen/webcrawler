@@ -22,6 +22,7 @@ class Huangye88spiderSpider(CrawlSpider):
 
     def parse_item(self, response):
         item = Huangye88comItem()
+        item['main_url']     = response.url
         item['company_name'] = response.xpath('//div[@class="Main"]/div[@class="Content"]/div[@class="Contact"]/table[@class="tablelist"][1]/tbody/tr[1]/td/a[1]/@title[1]')[0].extract()
         item['company_url']  = response.xpath('//div[@class="Main"]/div[@class="Content"]/div[@class="Contact"]/table[@class="tablelist"][1]/tbody/tr[1]/td/a[1]/@href[1]')[0].extract()
         item['company_location'] = response.xpath('//div[@class="Main"]/div[@class="Content"]/div[@class="Contact"]/table[@class="tablelist"][1]/tbody/tr[2]/td/a[1]/text()')[0].extract()

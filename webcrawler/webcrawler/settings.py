@@ -8,11 +8,13 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
 
+import os
+
 BOT_NAME = 'webcrawler'
 
 SPIDER_MODULES = ['webcrawler.spiders']
 NEWSPIDER_MODULE = 'webcrawler.spiders'
-CONCURRENT_ITEMS = 30
+CONCURRENT_ITEMS = 100
 
 # Enables scheduling storing requests queue in redis.
 #SCHEDULER = "scrapy_redis.scheduler.Scheduler"
@@ -61,3 +63,5 @@ SPIDER_MIDDLEWARES = {
 }
 
 #LOG_LEVEL = 'INFO'
+LOG_FILE = os.getcwd() + "/spider.log"
+DUPEFILTER_DEBUG = True

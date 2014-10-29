@@ -4,3 +4,13 @@
 *.*~
 .DS_Store
 env
+*.rdb
+build
+dbs
+eggs
+items
+logs
+project*
+setup.py
+*.pid
+

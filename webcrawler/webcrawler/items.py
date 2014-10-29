@@ -18,6 +18,7 @@ class WebcrawlerItem(scrapy.Item):
 
 
 class Huangye88comItem(scrapy.Item):
+    main_url               = scrapy.Field()
     company_url            = scrapy.Field()
     company_name           = scrapy.Field()
     company_location       = scrapy.Field()
