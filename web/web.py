@@ -33,6 +33,11 @@ def index(page):
     return render_template('index.html', items=json_decode(items), prev_page = prev_page, next_page = next_page)
 
 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
+
 def main():
     app.debug=True
     app.run(host='0.0.0.0')
